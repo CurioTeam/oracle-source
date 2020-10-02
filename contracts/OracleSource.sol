@@ -11,7 +11,7 @@ contract OracleSource {
         source = EACAggregatorProxy(_source);
     }
     
-    function pick() external view returns (bytes32 wut, bool ok) {
+    function peek() external view returns (bytes32 wut, bool ok) {
         int256 latestAnswer = source.latestAnswer();
         if (latestAnswer > 0) {
             return (bytes32(latestAnswer), true);
