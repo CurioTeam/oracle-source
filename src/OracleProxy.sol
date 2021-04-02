@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 
-pragma solidity ^0.7.2;
+pragma solidity 0.7.2;
 
 interface EACAggregatorProxy {
     function latestAnswer() external view returns (int256);
