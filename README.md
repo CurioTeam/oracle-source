@@ -22,7 +22,9 @@ curl -L https://nixos.org/nix/install | sh
 Then install [dapptools](https://github.com/dapphub/dapptools) into project root directory:
 
 ```shell script
-curl https://dapp.tools/install | sh
+curl https://dapp.tools/install | sh  
+
+nix-env -f https://github.com/dapphub/dapptools/archive/master.tar.gz -iA solc-static-versions.solc_0_7_2
 ```
 
 ## Usage
@@ -42,7 +44,7 @@ Configuration:
 * replace the values ```{deployer_address}``` (as in JSON file), ```{eth_net}``` (```mainnet```, ```kovan```, ... ), ```{infura_project_id}``` you need in the command below
 * set value ```{price_source_contract_address}``` as address of price feed contract (e.g. Chainlink aggregation contract)
 
-**Note:** Deployment of smart contract requires about 500,000 gas units (used gas). You can set variables ```ETH_GAS``` (gas limit in gas units), ```ETH_GAS_PRICE``` (gas price in wei) to adjust the gas.
+**Note:** Deployment of smart contract requires about 150,000 gas units (used gas). You can set variables ```ETH_GAS``` (gas limit in gas units), ```ETH_GAS_PRICE``` (gas price in wei) to adjust the gas.
 
 Run deploy command:
 
@@ -50,7 +52,7 @@ Run deploy command:
 ETH_FROM={deployer_address} \
 ETH_PASSWORD=./keystore/pwd \
 ETH_KEYSTORE=./keystore \
-ETH_GAS=500000 \
+ETH_GAS=150000 \
 ETH_GAS_PRICE={gas_price_wei} \
 ETH_RPC_URL=https://{eth_net}.infura.io/v3/{infura_project_id} \
 TMPDIR=/tmp \
