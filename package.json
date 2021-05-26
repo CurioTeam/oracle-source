@@ -1,7 +1,7 @@
 {
-  "name": "oracle-source-spell",
+  "name": "oracle-source",
   "version": "1.0.0",
-  "description": "Chainlink price oracle contracts",
+  "description": "Curio StableCoin System and ChainLink price oracle integration",
   "license": "MIT",
   "dependencies": {
     "@chainlink/contracts": "0.1.7",
