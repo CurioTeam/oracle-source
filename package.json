@@ -1,0 +1,10 @@
+{
+  "name": "oracle-source-spell",
+  "version": "1.0.0",
+  "description": "Chainlink price oracle contracts",
+  "license": "MIT",
+  "dependencies": {
+    "@chainlink/contracts": "0.1.7",
+    "@openzeppelin/contracts": "3.3.0"
+  }
+}

@@ -1,2 +1,9 @@
-out
-keystore
+.idea
+
+package-lock.json
+
+/node_modules/
+/build/
+.openzeppelin
+
+.env

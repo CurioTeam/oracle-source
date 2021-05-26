@@ -1,26 +1,13 @@
 /*
  * Curio StableCoin System
  *
- * Copyright ©️ 2020 Curio AG (Company Number FL-0002.594.728-9)
+ * Copyright ©️ 2021 Curio AG (Company Number FL-0002.594.728-9)
  * Incorporated and registered in Liechtenstein.
  *
- * Copyright ©️ 2020 Curio Capital AG (Company Number CHE-211.446.654)
+ * Copyright ©️ 2021 Curio Capital AG (Company Number CHE-211.446.654)
  * Incorporated and registered in Zug, Switzerland.
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-// SPDX-License-Identifier: GPL-3.0
+// SPDX-License-Identifier: MIT
 
 pragma solidity 0.5.12;
 
@@ -53,8 +40,8 @@ interface SpotAbstract {
 
 contract SpellAction {
     // KOVAN ADDRESSES
-    address constant PIP_MANA        = 0x54D2c91277Bb11Ecfd914C235cC6Ab5914c96204;
-    address constant MCD_SPOT        = 0x8B9656AfBAC4528160673852Ae4656FdabB2246f;
+    address constant PIP_CT1        = 0x49627E2E1fAC54Fa5b8F5464f8aD7D92b8Fd9958;
+    address constant MCD_SPOT       = 0xEA6DA6C66fc781F1882E60d64e0880FE3b0D74e1;
 
     function execute() external {
 
@@ -62,10 +49,10 @@ contract SpellAction {
         /*** CT1 COLLATERAL PRICE SOURCE CHANGE ***/
         /************************************/
         // Set ilk bytes32 variable
-        bytes32 ilk = "MANA-A";
+        bytes32 ilk = "CT1-A";
 
         // Set the COMP PIP in the Spotter
-        SpotAbstract(MCD_SPOT).file(ilk, "pip", PIP_MANA);
+        SpotAbstract(MCD_SPOT).file(ilk, "pip", PIP_CT1);
 
         // Update CT1 spot value in Vat
         SpotAbstract(MCD_SPOT).poke(ilk);
@@ -74,7 +61,7 @@ contract SpellAction {
 
 contract DssSpell {
     DSPauseAbstract public pause =
-    DSPauseAbstract(0x9700b2171c517Bd772546372D53D66F2Ff937003);
+        DSPauseAbstract(0x568a4C18e96b6dd9fE5417925e479509252dd87D); // KOVAN ADDRESS
     address         public action;
     bytes32         public tag;
     uint256         public eta;
@@ -82,7 +69,7 @@ contract DssSpell {
     uint256         public expiration;
     bool            public done;
 
-    string constant public description = "Use custom oracle for CT1";
+    string constant public description = "Use custom Ferrari F12 TDF price oracle for CT1";
 
     constructor() public {
         sig = abi.encodeWithSignature("execute()");
